@@ -1,6 +1,6 @@
 {
   "name": "@incorta-org/visual-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "incorta visual SDK",
   "main": "index.js",
   "types": "index",
