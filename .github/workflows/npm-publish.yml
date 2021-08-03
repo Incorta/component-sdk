@@ -1,3 +1,5 @@
+# This workflow will do publish to npm registry
+
 name: Node.js Package
 on:
   release:
