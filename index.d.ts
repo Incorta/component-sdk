@@ -12,8 +12,7 @@ export {
   FormulaField,
   InsightContext,
   LayerContext,
-  SortState,
-  DefaultTable
+  SortState
 } from './types/InsightContext';
 
 export {

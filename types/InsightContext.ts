@@ -1,5 +1,4 @@
 import { Datatype, BindingType, ChartDefinitionBase } from './InsightDefinition';
-import { JoinRule } from './InsightQuery';
 
 export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> = {
   /**

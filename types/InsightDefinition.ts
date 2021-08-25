@@ -1,10 +1,4 @@
-import {
-  InsightContext,
-  BindingContext,
-  LayerContext,
-  BindingField,
-  FilterState
-} from './InsightContext';
+import { InsightContext, BindingContext, LayerContext } from './InsightContext';
 import { AppContext } from './AppContext';
 
 export type ChartDefinitionBase = {
@@ -21,7 +15,7 @@ export type InsightDefinition<D extends ChartDefinitionBase = ChartDefinitionBas
    * Insight-level options (e.g. enableLayers)
    * optional.
    */
-  options?: InsightOptions<D>;
+  options?: InsightOptions;
   /**
    * Fire when user change insight visualization
    * optional.
@@ -456,7 +450,7 @@ export type LocaleString =
       prefix?: string;
     };
 
-export type InsightOptions<D extends ChartDefinitionBase = ChartDefinitionBase> = {
+export type InsightOptions = {
   /**
    * optional. default: false
    */
