@@ -1,6 +1,6 @@
 import { Datatype, BindingType, ChartDefinitionBase } from './InsightDefinition';
 
-export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> = {
+export interface InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> {
   /**
    * idnetifier of the insight instance
    */
@@ -80,7 +80,7 @@ export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> 
   bindings?: { [metaKey in keyof D['bindings']]: BindingContext<D['bindings'][metaKey]>[] };
 
   layers?: LayerContext[];
-};
+}
 
 export type BindingContext<B extends { [key: string]: any } = { [key: string]: any }> = {
   /**
