@@ -6,8 +6,6 @@ import {
   FilterState
 } from './InsightContext';
 import { AppContext } from './AppContext';
-import { QueryBuilderFactory } from './QueryBuilderFactory';
-import { IQueryBuilder } from './QueryBuilder';
 
 export type ChartDefinitionBase = {
   settings: { [key: string]: any };
@@ -35,22 +33,24 @@ export type InsightDefinition<D extends ChartDefinitionBase = ChartDefinitionBas
    */
   onInsightLeave?: ContextFunction<InsightContext, D>;
   /**
-   * Fire when user leave current insight visualization
-   * optional.
+   * insightSettings Props
    */
-  onDoubleClickColumn?: (validTrays: Tray[], queryRule: QueryRole) => Tray | undefined;
-  /**
-   * optional.
-   */
-  buildInsightQuery?: (
-    queryBuilderFactory: QueryBuilderFactory,
-    insightContext: InsightContext,
-    drilldowns?: FilterState[]
-  ) => IQueryBuilder[];
-  /**
-   * Insight settings e.g. height, title, ....
-   */
-  insightSettings: Setting<{ [key: string]: any }, D>[];
+  title?: {
+    /**
+     * default show true
+     */
+    visible?: boolean;
+  };
+  description?: {
+    /**
+     * default show true
+     */
+    visible?: boolean;
+  };
+  individualFilters?: Setting<{ [key: string]: any }, D>;
+  aggregatedFilters?: Setting<{ [key: string]: any }, D>;
+  distinctFilters?: Setting<{ [key: string]: any }, D>;
+  sort?: Setting<{ [key: string]: any }, D>;
   /**
    * Insight general setting e.g. legend, auto-refresh
    * optional.
@@ -76,56 +76,14 @@ export type Layer = {
 
 export type Info<D extends ChartDefinitionBase = ChartDefinitionBase> = {
   /**
-   * idnetifier of the insight type
-   * should be unique across all insights in the system
-   * stored in the meta-data of each instance
-   */
-  id: string;
-  /**
-   * to be able to convert the insight back to XML in a correct form
-   */
-  isGraph: boolean;
-  /**
-   * chart icon
-   */
-  icon?: string;
-  /**
-   * insight version
-   * stored in the meta-data of each instance
-   */
-  version: string;
-  /**
-   * display name
-   */
-  name: LocaleString;
-  /**
    * insight hint e.g. "Use at least 1 column in Dimension and 1 in Measure."
    */
   hint: LocaleString;
-  /**
-   * author name
-   */
-  author: string;
-  /**
-   * description
-   * optional.
-   */
-  description?: LocaleString;
   /**
    * locale
    * optional.
    */
   locale?: any;
-  /**
-   * Support building a data query for the engine
-   * optional. default: false
-   */
-  supportEngineQuery?: boolean;
-  /**
-   * Enable query data listing instead of aggregation
-   * optional. default: false
-   */
-  queryDetailedValues?: ContextFunction<boolean, D>;
   /**
    * Force enable showTotals setting regardless of the settings value
    * optional. default: false
@@ -158,6 +116,8 @@ export type SettingsGroup<
   isIgnored?: ContextFunction<boolean, D>;
 };
 
+export type SettingControlType = 'text' | 'number';
+
 export type Setting<
   S = { [key: string]: any },
   D extends ChartDefinitionBase = ChartDefinitionBase
@@ -169,35 +129,11 @@ export type Setting<
    */
   metaKey: Extract<keyof S, string>;
   /**
-   * legacy XML Path
-   */
-  xmlPath?: string;
-  /**
-   * legacy XML boolean map
-   */
-  xmlValueMap?: {
-    [metaKey: string]: any;
-  };
-  /**
-   * XML array path
-   */
-  xmlArrayPath?: string;
-  /**
-   * To fix dataType & datatype
-   */
-  xmlDataTypeCamelCase?: boolean;
-  /**
    * display name
    */
   name: LocaleString;
-  /**
-   * datatype of the setting
-   */
-  datatype: SettingDataType;
-  /**
-   * complexDataType
-   */
-  complexDataType?: Setting[];
+  type: SettingControlType;
+
   /**
    * Ignore the setting based on the context
    * When ignored, the setting doesn't show in the UI, nor stored in the meta-data
@@ -225,25 +161,10 @@ export type Setting<
    */
   warning?: ContextFunction<LocaleString, D>;
   /**
-   * reference to the custom UI components
-   * optional.
-   */
-  uiControlKey?: string;
-  /**
-   * reference to the custom UI components options
-   * optional.
-   */
-  uiControlOptions?: { [key: string]: any };
-  /**
    * the role of the setting in data calculation (e.g. sort, filter)
    * optional.
    */
   queryRole?: SettingQueryRole;
-  /**
-   * allow multiple values
-   * optional. default: false
-   */
-  isMultiple?: boolean;
   /**
    * default value
    * optional.
@@ -271,33 +192,6 @@ export type Setting<
     | number[]
     | boolean[]
     | ContextFunction<null | string | number | boolean | string[] | number[] | boolean[], D>;
-
-  xmlToJsonValue?: (
-    xmlObject: any,
-    utils: {
-      shortid: any;
-      getBindingField: (xmlObject: any) => BindingField;
-      getKeyValue: (
-        path: string,
-        object: any,
-        dataType: SettingDataType,
-        isMultiple?: boolean,
-        valueMap?: any
-      ) => any;
-      escape: (string?: string | undefined) => string | undefined;
-    }
-  ) => any;
-
-  jsonToXmlValue?: (
-    jsonObject: any,
-    utils: {
-      shortid: any;
-      getBindingField: (jsonObject: any) => any;
-      setValueInObject: (xmlPath: string, value: any) => any;
-      getInsightContext: () => InsightContext;
-      getParentField: () => any;
-    }
-  ) => any;
   /**
    * set of value options to choose from
    * when defined, the user cannot set a value outside of this set
@@ -315,13 +209,8 @@ export type Setting<
    */
   validator?: SettingValidator;
   /**
-   * settings hierarchy
-   * optional.
-   */
-  subSettings?: Setting[];
-  /**
    * only for insight settings
-   * decide to show/hide the setting for different view-moes of the insight
+   * decide to show/hide the setting for different view-modes of the insight
    * optional. default: [] (shows in all view modes)
    */
   supportedViewModes?: InsightViewMode[];
@@ -339,10 +228,6 @@ export type Tray<
    * should be unique across trays of same insight
    */
   metaKey: K;
-  /**
-   * legacy XML Path
-   */
-  xmlPath?: string;
   /**
    * display name
    */
@@ -383,9 +268,10 @@ export type Tray<
   maxCount?: number | ContextFunction<number, D>;
   /**
    * tray icon
+   * base 64 image
    * optional
    */
-  icon?: 'geoAttribute' | 'color' | 'tooltip' | 'size';
+  icon?: string;
   /**
    * hasClearButton
    * to display clear all button or not
@@ -405,12 +291,6 @@ export type Tray<
    */
   allowDisabledBindings?: boolean;
   /**
-   * trayGroupUiComponent
-   * group ui Component e.g. ant design tabs
-   * optional
-   */
-  trayGroupUiComponent?: 'geo-tabs';
-  /**
    * trayGroupId
    * the group id for a tray.
    * optional
@@ -426,13 +306,6 @@ export type Tray<
   sideEffect?: ContextFunction<Context, D>;
 
   canDrop?: (context: Context, draggedItem: any) => boolean;
-  /**
-   * support Drilldown mode for tray bindings
-   * Incase true: Only one binding is selected to be used in the data query (based on prompts)
-   * Incase false: All bindings are used in the data query
-   * optional. default: false
-   */
-  supportDrilldown?: boolean;
 };
 
 export type Datatype =
@@ -588,20 +461,7 @@ export type InsightOptions<D extends ChartDefinitionBase = ChartDefinitionBase> 
    * optional. default: false
    */
   enableLayers?: boolean;
-  /**
-   * optional. default: false
-   */
-  enableDownloadXLSX?: boolean;
-  /**
-   * optional. default: false
-   */
-  enableDownloadCSV?: boolean;
-  /**
-   * optional.
-   */
-  enableSQLQuery?: {
-    disabled: ContextFunction<boolean, D>;
-  };
+
   /**
    * optional. default false;
    */
@@ -610,10 +470,6 @@ export type InsightOptions<D extends ChartDefinitionBase = ChartDefinitionBase> 
    * optional. default false;
    */
   hasNoEngineData?: boolean;
-  /**
-   * optional. default false;
-   */
-  enableSaveAsBusinessView?: boolean;
 };
 
 export type LayerActionIcon = {
