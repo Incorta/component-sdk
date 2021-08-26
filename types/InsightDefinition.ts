@@ -110,7 +110,37 @@ export type SettingsGroup<
   isIgnored?: ContextFunction<boolean, D>;
 };
 
-export type SettingControlType = 'text' | 'number';
+export type BasicControlType = 'double' | 'integer' | 'string' | 'boolean';
+
+export type SettingControlType =
+  | BasicControlType
+  | 'number-format'
+  | 'date-format'
+  | 'conditional-formatting'
+  | 'trend-lines'
+  | 'color-picker'
+  | 'dashboard-drilldown'
+  | 'plot-bands'
+  | 'gauge-range'
+  | 'color-palette'
+  | 'color-palette-dropdown'
+  | 'droppable-textarea'
+  | 'field-browser'
+  | 'range'
+  | 'slider'
+  | 'values-color-picker'
+  | 'data-part-select'
+  | 'map-box-bounds'
+  | 'font-style'
+  | 'line-style'
+  | 'text-align'
+  | 'size-style'
+  | 'vertical-alignment'
+  | 'session-var-autocomplete'
+  | 'session-var-datepicker'
+  | 'sort-tray'
+  | 'filter-lov'
+  | 'generic-setting-tray';
 
 export type Setting<
   S = { [key: string]: any },
@@ -126,8 +156,10 @@ export type Setting<
    * display name
    */
   name: LocaleString;
+  /**
+   * Control type
+   */
   type: SettingControlType;
-
   /**
    * Ignore the setting based on the context
    * When ignored, the setting doesn't show in the UI, nor stored in the meta-data
