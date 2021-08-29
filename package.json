@@ -2,7 +2,7 @@
   "name": "@incorta-org/visual-sdk",
   "version": "0.1.2",
   "description": "incorta visual SDK",
-  "main": "index.js",
+  "main": "index.ts",
   "types": "index",
   "repository": {
     "type": "git",
