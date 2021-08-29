@@ -110,35 +110,42 @@ export type SettingsGroup<
   isIgnored?: ContextFunction<boolean, D>;
 };
 
-export type BasicControlType = 'double' | 'integer' | 'string' | 'boolean';
-
-export type SettingControlType =
-  | BasicControlType
-  | 'number-format'
-  | 'date-format'
-  | 'conditional-formatting'
-  | 'trend-lines'
-  | 'color-picker'
-  | 'dashboard-drilldown'
-  | 'plot-bands'
-  | 'color-palette'
-  | 'field-browser'
-  | 'range'
-  | 'slider'
-  | 'values-color-picker'
-  | 'data-part-select'
-  | 'font-style'
-  | 'line-style'
-  | 'text-align'
-  | 'size-style'
-  | 'vertical-alignment'
-  | 'sort-tray'
-  | 'filter-lov';
+type DataControl =
+  | {
+      datatype: 'string';
+      uiControlKey:
+        | 'number-format'
+        | 'date-format'
+        | 'color-picker'
+        | 'field-browser'
+        | 'font-style'
+        | 'line-style'
+        | 'text-align'
+        | 'size-style'
+        | 'vertical-alignment';
+    }
+  | {
+      datatype: 'string';
+      uiControlKey: 'color-palette';
+      isMultiple: true;
+    }
+  | {
+      datatype: 'double';
+      uiControlKey: 'slider';
+    }
+  | {
+      datatype: 'double';
+      uiControlKey: 'range';
+      isMultiple: true;
+    }
+  | {
+      datatype: Datatype;
+    };
 
 export type Setting<
   S = { [key: string]: any },
   D extends ChartDefinitionBase = ChartDefinitionBase
-> = {
+> = DataControl & {
   /**
    * stored in the meta-data of each instance, in addition to selected values
    * should be unique across insight-settings
@@ -149,10 +156,6 @@ export type Setting<
    * display name
    */
   name: LocaleString;
-  /**
-   * Control type
-   */
-  type: SettingControlType;
   /**
    * Ignore the setting based on the context
    * When ignored, the setting doesn't show in the UI, nor stored in the meta-data
@@ -327,17 +330,7 @@ export type Tray<
   canDrop?: (context: Context, draggedItem: any) => boolean;
 };
 
-export type Datatype =
-  | 'string'
-  | 'boolean'
-  | 'integer'
-  | 'long'
-  | 'float'
-  | 'double'
-  | 'formula'
-  | 'date'
-  | 'text'
-  | 'timestamp'; // TODO: add all datatypes
+export type Datatype = 'string' | 'boolean' | 'integer' | 'double';
 
 export enum InsightViewMode {
   maximized,
@@ -505,5 +498,3 @@ export type LayerAction = {
   visible: boolean;
   tooltipMessage: string;
 };
-
-export type SettingDataType = Datatype | 'color' | 'bindingField' | 'complex';
