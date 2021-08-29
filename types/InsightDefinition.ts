@@ -70,9 +70,9 @@ export type Layer = {
 
 export type Info<D extends ChartDefinitionBase = ChartDefinitionBase> = {
   /**
-   * insight hint e.g. "Use at least 1 column in Dimension and 1 in Measure."
+   * chart icon
    */
-  hint: LocaleString;
+  icon?: string;
   /**
    * locale
    * optional.
