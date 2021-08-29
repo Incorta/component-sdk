@@ -1,15 +1,10 @@
 import { Datatype, BindingType, ChartDefinitionBase } from './InsightDefinition';
-import { JoinRule } from './InsightQuery';
 
 export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> = {
   /**
    * idnetifier of the insight instance
    */
   id: string;
-  /**
-   * identifier of the visualization type
-   */
-  type_id: string;
   /**
    * visualization version
    */
@@ -66,7 +61,6 @@ export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> 
    * optional.
    */
   sort?: SortState[];
-  //TODO add join rules
   /**
    * visualization internal state
    * managed by the visualization, doesn't affect incorta data
@@ -86,15 +80,6 @@ export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> 
   bindings?: { [metaKey in keyof D['bindings']]: BindingContext<D['bindings'][metaKey]>[] };
 
   layers?: LayerContext[];
-  /**
-   * insight join rules, is only available when context.app.features.['LABS_ENGINE_SAVE_QUERY_PLAN'] is enabled.
-   * optional.
-   */
-  joinRules?: JoinRule[];
-  /**
-   * Tables which shows in the Data Panel
-   */
-  defaultTables: DefaultTable[];
 };
 
 export type BindingContext<B extends { [key: string]: any } = { [key: string]: any }> = {
@@ -203,8 +188,3 @@ export type AnalyzerMode =
   | 'incorta-view'
   | 'incorta-ad-hoc-view'
   | 'alert-condition';
-
-export type DefaultTable = {
-  schema: string;
-  table: string;
-};
