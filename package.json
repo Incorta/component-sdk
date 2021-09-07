@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/Incorta/visual-sdk/issues"
   },
-  "homepage": "https://github.com/Incorta/visual-sdk#readme"
+  "homepage": "https://github.com/Incorta/visual-sdk#readme",
+  "devDependencies": {
+    "@formatjs/intl": "^1.14.1"
+  }
 }
