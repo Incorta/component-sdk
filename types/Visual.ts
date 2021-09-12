@@ -10,6 +10,10 @@ export interface VisualProps {
     height: number;
     width: number;
   };
+  locale: {
+    locale: string;
+    formatMessage(key: string): string;
+  };
 }
 
 export type ResponseData = {
