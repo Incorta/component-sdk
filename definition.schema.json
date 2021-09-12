@@ -1,10 +1,6 @@
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "properties": {
-    "icon": {
-      "type": "string"
-    },
     "options": {
       "type": "object",
       "properties": {
@@ -36,29 +32,8 @@
       "items": {
         "$ref": "#/definitions/bindingsTray"
       }
-    },
-    "b": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "const": "string"
-          },
-          "age": {
-            "const": "age"
-          },
-          "settings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/rowSettingsGroup"
-            }
-          }
-        }
-      }
     }
   },
-  "required": ["icon"],
   "definitions": {
     "globalSettingsGroup": {
       "type": "object",
