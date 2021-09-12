@@ -17,5 +17,3 @@ export * from './types/QueryBuilder';
 export * from './types/ConditionalFormatting';
 
 export * from './types/Visual';
-
-export * from './types/Localization';
