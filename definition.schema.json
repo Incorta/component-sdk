@@ -1,6 +1,9 @@
 {
   "type": "object",
   "properties": {
+    "icon": {
+      "type": "string"
+    },
     "options": {
       "type": "object",
       "properties": {
@@ -34,6 +37,7 @@
       }
     }
   },
+  "required": ["icon"],
   "definitions": {
     "globalSettingsGroup": {
       "type": "object",
