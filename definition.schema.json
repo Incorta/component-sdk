@@ -1,0 +1,506 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "type": "object",
+  "properties": {
+    "icon": {
+      "type": "string"
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "aggregation": {
+          "type": "boolean"
+        },
+        "sort": {
+          "type": "boolean"
+        },
+        "individualFilter": {
+          "type": "boolean"
+        },
+        "distinctFilter": {
+          "type": "boolean"
+        },
+        "aggregateFilter": {
+          "type": "boolean"
+        }
+      }
+    },
+    "settings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/globalSettingsGroup"
+      }
+    },
+    "bindingsTrays": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/bindingsTray"
+      }
+    },
+    "b": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "const": "string"
+          },
+          "age": {
+            "const": "age"
+          },
+          "settings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/rowSettingsGroup"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["icon"],
+  "definitions": {
+    "globalSettingsGroup": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/locale"
+        },
+        "settings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/globalSettings"
+          }
+        }
+      }
+    },
+    "locale": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "baseSettings": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/definitions/locale"
+        }
+      }
+    },
+    "globalSettings": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseSettings"
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/control.boolean"
+            },
+            {
+              "$ref": "#/definitions/control.number"
+            },
+            {
+              "$ref": "#/definitions/control.text"
+            },
+            {
+              "$ref": "#/definitions/control.dropdown"
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "page-size"
+                },
+                "defaultValue": {
+                  "type": "number"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "max-rows"
+                },
+                "defaultValue": {
+                  "type": "number"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "sub-total"
+                },
+                "defaultValue": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "total"
+                },
+                "defaultValue": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "max-groups"
+                },
+                "defaultValue": {
+                  "type": "number"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "missing-values"
+                },
+                "defaultValue": {
+                  "type": "string"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "join-measures"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "control.boolean": {
+      "properties": {
+        "type": {
+          "const": "boolean"
+        },
+        "defaultValue": {
+          "type": "boolean"
+        }
+      }
+    },
+    "control.number": {
+      "properties": {
+        "type": {
+          "const": "number"
+        },
+        "defaultValue": {
+          "type": "number"
+        }
+      }
+    },
+    "control.text": {
+      "properties": {
+        "type": {
+          "const": "text"
+        },
+        "defaultValue": {
+          "type": "string"
+        }
+      }
+    },
+    "control.dropdown": {
+      "properties": {
+        "type": {
+          "const": "dropdown"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "bindingsTray": {
+      "type": "object",
+      "allOf": [
+        {
+          "properties": {
+            "key": {
+              "type": "string"
+            },
+            "name": {
+              "$ref": "#/definitions/locale"
+            },
+            "minCount": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "maxCount": {
+              "type": "number",
+              "minimum": 1,
+              "maximum": 100
+            }
+          }
+        },
+        {
+          "oneOf": [
+            {
+              "properties": {
+                "queryRole": {
+                  "const": "measure"
+                },
+                "settings": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/measureSettingsGroup"
+                  }
+                }
+              }
+            },
+            {
+              "properties": {
+                "queryRole": {
+                  "const": "row"
+                },
+                "settings": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/rowSettingsGroup"
+                  }
+                }
+              }
+            },
+            {
+              "properties": {
+                "queryRole": {
+                  "const": "column"
+                },
+                "settings": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/columnSettingsGroup"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "measureSettingsGroup": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/locale"
+        },
+        "settings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/measureSettings"
+          }
+        }
+      }
+    },
+    "measureSettings": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseSettings"
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/control.boolean"
+            },
+            {
+              "$ref": "#/definitions/control.number"
+            },
+            {
+              "$ref": "#/definitions/control.text"
+            },
+            {
+              "$ref": "#/definitions/control.dropdown"
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "scale"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "running-total"
+                },
+                "defaultValue": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "filter"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "format"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "drill-down"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "range"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "rowSettingsGroup": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/locale"
+        },
+        "settings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/rowSettings"
+          }
+        }
+      }
+    },
+    "rowSettings": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseSettings"
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/control.boolean"
+            },
+            {
+              "$ref": "#/definitions/control.number"
+            },
+            {
+              "$ref": "#/definitions/control.text"
+            },
+            {
+              "$ref": "#/definitions/control.dropdown"
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "show-empty-groups"
+                },
+                "defaultValue": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "sort"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "drill-down"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "columnSettingsGroup": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/locale"
+        },
+        "settings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/columnSettings"
+          }
+        }
+      }
+    },
+    "columnSettings": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseSettings"
+        },
+        {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/control.boolean"
+            },
+            {
+              "$ref": "#/definitions/control.number"
+            },
+            {
+              "$ref": "#/definitions/control.text"
+            },
+            {
+              "$ref": "#/definitions/control.dropdown"
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "sort"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
