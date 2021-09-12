@@ -1,8 +1,0 @@
-{
-  "json.schemas": [
-    {
-      "fileMatch": ["definition.json"],
-      "url": "./definition.schema.json"
-    }
-  ]
-}
