@@ -1,10 +1,6 @@
 {
-  "$schema": "https://json-schema.org/draft/2019-09/schema",
   "type": "object",
   "properties": {
-    "icon": {
-      "type": "string"
-    },
     "options": {
       "type": "object",
       "properties": {
@@ -38,7 +34,6 @@
       }
     }
   },
-  "required": ["icon"],
   "definitions": {
     "globalSettingsGroup": {
       "type": "object",
