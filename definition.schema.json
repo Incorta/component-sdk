@@ -36,26 +36,6 @@
       "items": {
         "$ref": "#/definitions/bindingsTray"
       }
-    },
-    "b": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "const": "string"
-          },
-          "age": {
-            "const": "age"
-          },
-          "settings": {
-            "type": "array",
-            "items": {
-              "$ref": "#/definitions/rowSettingsGroup"
-            }
-          }
-        }
-      }
     }
   },
   "required": ["icon"],
