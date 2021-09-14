@@ -121,7 +121,7 @@
             {
               "properties": {
                 "type": {
-                  "const": "sub-total"
+                  "const": "row-sub-total"
                 },
                 "defaultValue": {
                   "type": "boolean"
@@ -131,7 +131,27 @@
             {
               "properties": {
                 "type": {
-                  "const": "total"
+                  "const": "row-total"
+                },
+                "defaultValue": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "column-sub-total"
+                },
+                "defaultValue": {
+                  "type": "boolean"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "column-total"
                 },
                 "defaultValue": {
                   "type": "boolean"
