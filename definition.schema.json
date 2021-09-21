@@ -1,6 +1,12 @@
 {
   "type": "object",
   "properties": {
+    "name": {
+      "$ref": "#/definitions/locale"
+    },
+    "hint": {
+      "$ref": "#/definitions/locale"
+    },
     "icon": {
       "type": "string"
     },
