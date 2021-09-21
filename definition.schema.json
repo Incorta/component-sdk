@@ -105,6 +105,9 @@
               "$ref": "#/definitions/control.dropdown"
             },
             {
+              "$ref": "#/definitions/control.color"
+            },
+            {
               "properties": {
                 "type": {
                   "const": "page-size"
@@ -249,6 +252,16 @@
         }
       }
     },
+    "control.color": {
+      "properties": {
+        "type": {
+          "const": "color"
+        },
+        "defaultValue": {
+          "type": "string"
+        }
+      }
+    },
     "bindingsTray": {
       "type": "object",
       "allOf": [
@@ -352,6 +365,9 @@
               "$ref": "#/definitions/control.dropdown"
             },
             {
+              "$ref": "#/definitions/control.color"
+            },
+            {
               "properties": {
                 "type": {
                   "const": "scale"
@@ -379,6 +395,13 @@
               "properties": {
                 "type": {
                   "const": "format"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
+                  "const": "conditional-formatting"
                 }
               }
             },
@@ -433,6 +456,9 @@
             },
             {
               "$ref": "#/definitions/control.dropdown"
+            },
+            {
+              "$ref": "#/definitions/control.color"
             },
             {
               "properties": {
@@ -495,6 +521,9 @@
             },
             {
               "$ref": "#/definitions/control.dropdown"
+            },
+            {
+              "$ref": "#/definitions/control.color"
             },
             {
               "properties": {
