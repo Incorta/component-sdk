@@ -1,12 +1,12 @@
 import { Datatype } from './InsightDefinition';
 import { Context } from './InsightDefinition';
 
-export interface VisualProps {
+export interface ComponentsProps {
   insight: {
     data: ResponseData;
     context: Context;
   };
-  dimension: {
+  dimensions: {
     height: number;
     width: number;
   };
@@ -17,11 +17,11 @@ export interface VisualProps {
 }
 
 export type ResponseData = {
-  data: FlatJSONData;
-  rowHeaders?: FlatResponseHeader[];
-  colHeaders?: FlatResponseHeader[];
-  measureHeaders: FlatResponseHeader[];
-  footer?: FlatResponseFooter;
+  data: Data;
+  rowHeaders?: ResponseHeader[];
+  colHeaders?: ResponseHeader[];
+  measureHeaders: ResponseHeader[];
+  footer?: ResponseFooter;
   complete?: boolean;
   subqueryComplete?: boolean;
   isAggregated?: boolean;
@@ -32,21 +32,21 @@ export type ResponseData = {
   totalRows: number;
 };
 
-type FlatJSONData = FlatJSONCell[][];
+type Data = Cell[][];
 
-type FlatJSONCell = {
+type Cell = {
   value: string;
   formatted?: string;
   link?: string;
 };
 
-type FlatResponseHeader = {
+type ResponseHeader = {
   label: string;
   dataType: Datatype;
   index: number;
   id: string;
 };
 
-type FlatResponseFooter = {
+type ResponseFooter = {
   pivotColumnHeaders?: string[][];
 };
