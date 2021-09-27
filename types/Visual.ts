@@ -1,7 +1,7 @@
 import { Datatype } from './InsightDefinition';
 import { Context } from './InsightDefinition';
 
-export interface ComponentsProps {
+export interface ComponentProps {
   insight: {
     data: ResponseData;
     context: Context;
@@ -18,10 +18,10 @@ export interface ComponentsProps {
 
 export type ResponseData = {
   data: Data;
-  rowHeaders?: ResponseHeader[];
-  colHeaders?: ResponseHeader[];
-  measureHeaders: ResponseHeader[];
-  footer?: ResponseFooter;
+  rowHeaders?: Header[];
+  colHeaders?: Header[];
+  measureHeaders: Header[];
+  footer?: Footer;
   complete?: boolean;
   subqueryComplete?: boolean;
   isAggregated?: boolean;
@@ -40,13 +40,13 @@ type Cell = {
   link?: string;
 };
 
-type ResponseHeader = {
+type Header = {
   label: string;
   dataType: Datatype;
   index: number;
   id: string;
 };
 
-type ResponseFooter = {
+type Footer = {
   pivotColumnHeaders?: string[][];
 };
