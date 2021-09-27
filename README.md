@@ -1,1 +1,1 @@
-# Incorta Visual SDK
+# Incorta Component SDK
