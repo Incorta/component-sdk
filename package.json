@@ -1,19 +1,19 @@
 {
-  "name": "@incorta-org/visual-sdk",
-  "version": "0.1.2-alpha.12",
-  "description": "incorta visual SDK",
+  "name": "@incorta-org/component-sdk",
+  "version": "0.0.1-alpha.1",
+  "description": "incorta Component SDK",
   "main": "index.ts",
   "types": "index",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Incorta/visual-sdk.git"
+    "url": "git+https://github.com/Incorta/component-sdk.git"
   },
   "keywords": [],
   "author": "incorta",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Incorta/visual-sdk/issues"
+    "url": "https://github.com/Incorta/component-sdk/issues"
   },
-  "homepage": "https://github.com/Incorta/visual-sdk#readme",
+  "homepage": "https://github.com/Incorta/component-sdk#readme",
   "dependencies": {}
 }
