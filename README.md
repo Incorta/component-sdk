@@ -4,6 +4,8 @@ The Incorta Component SDK is used to create new visualizations or plugins for In
 
 Development of Incorta Components presumes knowledge of HTML, CSS, JSON, Javascript, Node.js, NPM, React, and Typescript. You will also need to be familiar with Incorta, including Incorta Analyzer, and analytics concepts in general.
 
+> Note: This project contains the Typescript definition and JSON schema files for an Incorta Component SDK project. The actual project that developers will use is [incorta/create-incorta-component](https://github.com/Incorta/create-incorta-component) installable via NPM. 
+
 #### Prerequisites
 
 - You'll need access to an Incorta cluster. [Incorta Cloud signup](https://cloud.incorta.com/signup/) is quick and easy.
