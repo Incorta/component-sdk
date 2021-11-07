@@ -1,3 +1,4 @@
+import { BindingContext } from './InsightContext';
 import { Datatype } from './InsightDefinition';
 import { Context } from './InsightDefinition';
 
@@ -14,6 +15,47 @@ export interface ComponentProps {
     locale: string;
     formatMessage(key: string): string;
   };
+  onDrillDown: onDrillDownFunction;
+  appliedPrompts: AppliedPrompts;
+}
+
+export type AppliedPrompts = {
+  [column: string]: {
+    column: string;
+    dataType: string;
+    default: boolean;
+    id: string;
+    label: string;
+    mandatory: boolean;
+    op: string;
+    options: {
+      caseSensitive?: boolean;
+      depth?: number;
+    };
+    type: string;
+    values: string[];
+  };
+};
+
+export type Drill = {
+  bindingContext: BindingContext;
+  drill: DrillType;
+  isMeasureDrill?: boolean;
+  value: string;
+  operator: string;
+  dataType: string;
+};
+
+export type onDrillDownFunction = (drilldown: {
+  event: MouseEvent;
+  drills: Drill[];
+  measureIndex: 0;
+}) => void;
+
+export enum DrillType {
+  Row = 'row',
+  Column = 'column',
+  RowColumn = 'row-column'
 }
 
 export type ResponseData = {
