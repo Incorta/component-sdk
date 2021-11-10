@@ -2,7 +2,7 @@ import { Datatype, BindingType, ChartDefinitionBase } from './InsightDefinition'
 
 export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> = {
   /**
-   * idnetifier of the insight instance
+   * idnetifier of the insight i`nstance
    */
   id: string;
   /**
@@ -17,10 +17,6 @@ export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> 
    * widthScale
    */
   widthScale: number;
-  /**
-   * height
-   */
-  height: number;
   /**
    * automaticHeight
    */
@@ -52,7 +48,7 @@ export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> 
   /**
    * optional.
    */
-  aggregatedFilters?: FilterState[];
+  aggregateFilters?: FilterState[];
   /**
    * optional.
    */
@@ -61,12 +57,6 @@ export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> 
    * optional.
    */
   sort?: SortState[];
-  /**
-   * visualization internal state
-   * managed by the visualization, doesn't affect incorta data
-   * optional.
-   */
-  insightPrivateContent?: any;
   /**
    * settings state obj <setting_key, setting_value>
    * optional.
@@ -78,8 +68,13 @@ export type InsightContext<D extends ChartDefinitionBase = ChartDefinitionBase> 
    * optional.
    */
   bindings?: { [metaKey in keyof D['bindings']]: BindingContext<D['bindings'][metaKey]>[] };
-
-  layers?: LayerContext[];
+  /**
+   * visual container dimensions
+   */
+  dimensions: {
+    height: number;
+    width: number;
+  };
 };
 
 export type BindingContext<B extends { [key: string]: any } = { [key: string]: any }> = {

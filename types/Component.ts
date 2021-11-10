@@ -3,18 +3,8 @@ import { Datatype } from './InsightDefinition';
 import { Context } from './InsightDefinition';
 
 export interface ComponentProps {
-  insight: {
-    data: ResponseData;
-    context: Context;
-  };
-  dimensions: {
-    height: number;
-    width: number;
-  };
-  locale: {
-    locale: string;
-    formatMessage(key: string): string;
-  };
+  context: Context;
+  response: ResponseData;
   onDrillDown: onDrillDownFunction;
   appliedPrompts: AppliedPrompts;
 }

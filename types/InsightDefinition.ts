@@ -444,14 +444,8 @@ export type ContextFunction<T, D extends ChartDefinitionBase = ChartDefinitionBa
 ) => T;
 
 export type Context<D extends ChartDefinitionBase = ChartDefinitionBase> = {
-  insight: InsightContext<D>;
+  component: InsightContext<D>;
   app: AppContext;
-  /**
-   * The current binding
-   * This is only available for binding settings
-   */
-  binding?: BindingContext;
-  layer?: LayerContext;
 };
 
 export type LocaleString =
