@@ -1,5 +1,7 @@
-import { ComponentProps } from './types/Component';
+import { ComponentProps, ResponseData } from './types/Component';
 import { Context } from './types/InsightDefinition';
+import { InsightQuery } from './types/InsightQuery';
+import { UseQueryResult } from 'react-query';
 
 export * from './types/AppContext';
 
@@ -31,6 +33,12 @@ export function usePrompts(): {
   drillDown: ComponentProps['onDrillDown'];
 };
 
-export function useQueryBuilder(context: Context, prompts?: any): any;
+export function useQueryBuilder(
+  context: Context,
+  prompts?: ComponentProps['appliedPrompts']
+): {
+  loading: boolean;
+  queryObject: null | InsightQuery;
+};
 
-export function useQuery(queryObject: any): any;
+export function useQuery(queryObject: null | InsightQuery): UseQueryResult<ResponseData, any>;

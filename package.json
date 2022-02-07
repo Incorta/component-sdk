@@ -15,5 +15,7 @@
     "url": "https://github.com/Incorta/component-sdk/issues"
   },
   "homepage": "https://github.com/Incorta/component-sdk#readme",
-  "dependencies": {}
+  "dependencies": {
+    "react-query": "^3.34.7"
+  }
 }
