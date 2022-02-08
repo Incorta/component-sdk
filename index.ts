@@ -1,7 +1,7 @@
 import { ComponentProps, ResponseData } from './types/Component';
 import { Context } from './types/InsightDefinition';
 import { InsightQuery } from './types/InsightQuery';
-import { UseQueryResult } from 'react-query';
+import { UseQueryOptions, UseQueryResult } from 'react-query';
 
 export * from './types/AppContext';
 
@@ -41,4 +41,13 @@ export function useQueryBuilder(
   queryObject: null | InsightQuery;
 };
 
-export function useQuery(queryObject: null | InsightQuery): UseQueryResult<ResponseData, any>;
+export function useCustomQuery(
+  queryObject: null | InsightQuery,
+  options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
+): UseQueryResult<ResponseData, any>;
+
+export function useQuery(
+  context: Context,
+  prompts?: ComponentProps['appliedPrompts'],
+  options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
+): UseQueryResult<ResponseData, any> & { queryObject: null | InsightQuery };
