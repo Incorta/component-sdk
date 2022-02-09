@@ -50,4 +50,8 @@ export function useQuery(
   context: Context,
   prompts?: ComponentProps['appliedPrompts'],
   options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
-): UseQueryResult<ResponseData, any> & { queryObject: null | InsightQuery };
+): UseQueryResult<ResponseData, any> & {
+  queryObject: null | InsightQuery;
+  context: null | Context;
+  prompts: null | ComponentProps['appliedPrompts'];
+};
