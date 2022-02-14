@@ -1,4 +1,9 @@
-import { ComponentProps, ResponseData } from './types/Component';
+import {
+  AppliedPrompts,
+  ComponentProps,
+  onDrillDownFunction,
+  ResponseData
+} from './types/Component';
 import { Context } from './types/InsightDefinition';
 import { InsightQuery } from './types/InsightQuery';
 import { UseQueryOptions, UseQueryResult } from 'react-query';
@@ -29,17 +34,14 @@ export function useLocale(): {
 export function useContext(): ComponentProps['context'];
 
 export function usePrompts(): {
-  prompts: ComponentProps['appliedPrompts'];
-  drillDown: ComponentProps['onDrillDown'];
+  prompts: AppliedPrompts;
+  drillDown: onDrillDownFunction;
 };
 
 export function useQueryBuilder(
   context: Context,
-  prompts?: ComponentProps['appliedPrompts']
-): {
-  loading: boolean;
-  queryObject: null | InsightQuery;
-};
+  prompts?: AppliedPrompts
+): UseQueryResult<InsightQuery, any>;
 
 export function useCustomQuery(
   queryObject: null | InsightQuery,
@@ -48,10 +50,10 @@ export function useCustomQuery(
 
 export function useQuery(
   context: Context,
-  prompts?: ComponentProps['appliedPrompts'],
+  prompts?: AppliedPrompts,
   options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
 ): UseQueryResult<ResponseData, any> & {
-  queryObject: null | InsightQuery;
+  queryBuilderResult: UseQueryResult<ResponseData, any>;
   context: null | Context;
-  prompts: null | ComponentProps['appliedPrompts'];
+  prompts: null | AppliedPrompts;
 };
