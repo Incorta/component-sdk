@@ -1,9 +1,16 @@
+import { ChartDefinitionBase } from '..';
 import { BindingContext } from './InsightContext';
 import { Datatype } from './InsightDefinition';
 import { Context } from './InsightDefinition';
+import { Settings, Bindings } from '../generated/context';
+
+interface TContext extends ChartDefinitionBase {
+  settings: Settings;
+  bindings: Bindings;
+}
 
 export interface ComponentProps {
-  context: Context;
+  context: Context<TContext>;
   response: ResponseData;
   onDrillDown: onDrillDownFunction;
   appliedPrompts: AppliedPrompts;

@@ -1,8 +1,8 @@
 {
   "name": "@incorta-org/component-sdk",
-  "version": "0.0.1-alpha.3",
+  "version": "1.0.0-alpha.0",
   "description": "incorta Component SDK",
-  "main": "index.ts",
+  "main": "index.js",
   "types": "index",
   "repository": {
     "type": "git",
@@ -15,5 +15,7 @@
     "url": "https://github.com/Incorta/component-sdk/issues"
   },
   "homepage": "https://github.com/Incorta/component-sdk#readme",
-  "dependencies": {}
+  "dependencies": {
+    "react-query": "^3.34.7"
+  }
 }

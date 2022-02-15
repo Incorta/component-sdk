@@ -31,3 +31,15 @@ export interface TrendLinesValue {
   periodEMA?: string;
   EMALineStyle?: string;
 }
+
+export interface Range {
+  stop: number;
+  color: string;
+}
+
+export interface Condition {
+  value: string;
+  op: string;
+  color?: string | null;
+  background?: string | null;
+}
