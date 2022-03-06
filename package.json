@@ -1,6 +1,6 @@
 {
   "name": "@incorta-org/component-sdk",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "incorta Component SDK",
   "main": "index.js",
   "types": "index",
@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/Incorta/component-sdk#readme",
   "dependencies": {
+    "react": "^17.0.2",
     "react-query": "^3.34.7"
   }
 }

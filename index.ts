@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   AppliedPrompts,
   ComponentProps,
@@ -57,3 +58,17 @@ export function useQuery(
   context: null | Context;
   prompts: null | AppliedPrompts;
 };
+
+type LoaderOverlayProps = React.PropsWithChildren<{
+  data?: any;
+  isLoading?: boolean;
+}>;
+
+export function LoadingOverlay(props: LoaderOverlayProps): any;
+
+type ErrorOverlayProps = React.PropsWithChildren<{
+  isError?: boolean;
+  error?: any;
+}>;
+
+export function ErrorOverlay(props: ErrorOverlayProps): any;
