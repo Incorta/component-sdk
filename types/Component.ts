@@ -44,16 +44,12 @@ export type Drill = {
 };
 
 export type onDrillDownFunction = (drilldown: {
-  event: MouseEvent;
+  event?: MouseEvent;
   drills: Drill[];
   measureIndex: 0;
 }) => void;
 
-export enum DrillType {
-  Row = 'row',
-  Column = 'column',
-  RowColumn = 'row-column'
-}
+export type DrillType = 'row' | 'column' | 'row-column';
 
 export type ResponseData = {
   data: Data;

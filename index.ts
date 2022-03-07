@@ -40,7 +40,7 @@ export function usePrompts(): {
 };
 
 export function useQueryBuilder(
-  context: Context,
+  context: Context<any>,
   prompts?: AppliedPrompts
 ): UseQueryResult<InsightQuery, any>;
 
@@ -50,7 +50,7 @@ export function useCustomQuery(
 ): UseQueryResult<ResponseData, any>;
 
 export function useQuery(
-  context: Context,
+  context: Context<any>,
   prompts?: AppliedPrompts,
   options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
 ): UseQueryResult<ResponseData, any> & {
