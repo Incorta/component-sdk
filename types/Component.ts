@@ -4,7 +4,7 @@ import { Datatype } from './InsightDefinition';
 import { Context } from './InsightDefinition';
 import { Settings, Bindings } from '../generated/context';
 
-interface TContext extends ChartDefinitionBase {
+export interface TContext extends ChartDefinitionBase {
   settings: Settings;
   bindings: Bindings;
 }
