@@ -1,4 +1,4 @@
-import { InsightContext, BindingContext, LayerContext } from './InsightContext';
+import { InsightContext } from './InsightContext';
 import { AppContext } from './AppContext';
 
 export type ChartDefinitionBase = {

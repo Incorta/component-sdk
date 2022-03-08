@@ -4,10 +4,10 @@ import { Datatype } from './InsightDefinition';
 import { Context } from './InsightDefinition';
 import { Settings, Bindings } from '../generated/context';
 
-export interface TContext extends ChartDefinitionBase {
+export type TContext = ChartDefinitionBase & {
   settings: Settings;
   bindings: Bindings;
-}
+};
 
 export interface ComponentProps {
   context: Context<TContext>;
