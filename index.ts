@@ -1,10 +1,11 @@
+import React from 'react';
 import {
   AppliedPrompts,
   ComponentProps,
   onDrillDownFunction,
   ResponseData
 } from './types/Component';
-import { Context } from './types/InsightDefinition';
+import { ChartDefinitionBase, Context } from './types/InsightDefinition';
 import { InsightQuery } from './types/InsightQuery';
 import { UseQueryOptions, UseQueryResult } from 'react-query';
 
@@ -38,22 +39,36 @@ export function usePrompts(): {
   drillDown: onDrillDownFunction;
 };
 
-export function useQueryBuilder(
-  context: Context,
+export function useQueryBuilder<T extends ChartDefinitionBase>(
+  context: Context<T>,
   prompts?: AppliedPrompts
 ): UseQueryResult<InsightQuery, any>;
 
 export function useCustomQuery(
-  queryObject: null | InsightQuery,
+  queryObject: null | undefined | InsightQuery,
   options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
 ): UseQueryResult<ResponseData, any>;
 
-export function useQuery(
-  context: Context,
+export function useQuery<T extends ChartDefinitionBase>(
+  context: Context<T>,
   prompts?: AppliedPrompts,
   options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
 ): UseQueryResult<ResponseData, any> & {
   queryBuilderResult: UseQueryResult<ResponseData, any>;
-  context: null | Context;
+  context: null | Context<T>;
   prompts: null | AppliedPrompts;
 };
+
+type LoaderOverlayProps = React.PropsWithChildren<{
+  data?: any;
+  isLoading?: boolean;
+}>;
+
+export function LoadingOverlay(props: LoaderOverlayProps): any;
+
+type ErrorOverlayProps = React.PropsWithChildren<{
+  isError?: boolean;
+  error?: any;
+}>;
+
+export function ErrorOverlay(props: ErrorOverlayProps): any;
