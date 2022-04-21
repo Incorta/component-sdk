@@ -6,7 +6,8 @@ let {
   useCustomQuery,
   useQuery,
   LoadingOverlay,
-  ErrorOverlay
+  ErrorOverlay,
+  usePrivateData
 } = window.incortaSDKApi ?? {};
 
 export {
@@ -17,5 +18,6 @@ export {
   useCustomQuery,
   useQuery,
   LoadingOverlay,
-  ErrorOverlay
+  ErrorOverlay,
+  usePrivateData
 };
