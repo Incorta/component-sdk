@@ -59,6 +59,11 @@ export function useQuery<T extends ChartDefinitionBase>(
   prompts: null | AppliedPrompts;
 };
 
+export function usePrivateData(): {
+  privateData: any;
+  setPrivateData: (privateData: any) => void;
+};
+
 type LoaderOverlayProps = React.PropsWithChildren<{
   data?: any;
   isLoading?: boolean;
