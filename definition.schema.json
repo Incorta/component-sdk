@@ -22,6 +22,9 @@
         "individualFilter": {
           "type": "boolean"
         },
+        "ignoreRuntimeFilterFields": {
+          "type": "boolean"
+        },
         "distinctFilter": {
           "type": "boolean"
         },
