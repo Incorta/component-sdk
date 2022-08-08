@@ -1,6 +1,6 @@
 {
   "name": "@incorta-org/component-sdk",
-  "version": "1.0.2-alpha.2",
+  "version": "1.1.0",
   "description": "incorta Component SDK",
   "main": "index.js",
   "types": "index",
