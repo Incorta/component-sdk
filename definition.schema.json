@@ -84,6 +84,12 @@
         },
         "name": {
           "$ref": "#/definitions/locale"
+        },
+        "description": {
+          "type": "string"
+        },
+        "warning": {
+          "type": "string"
         }
       }
     },
