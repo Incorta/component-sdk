@@ -37,6 +37,8 @@ export function useContext(): ComponentProps['context'];
 export function usePrompts(): {
   prompts: AppliedPrompts;
   drillDown: onDrillDownFunction;
+  presentationVariables: any[];
+  setPresentationVariableValue: (key, value) => void;
 };
 
 export function useQueryBuilder<T extends ChartDefinitionBase>(
