@@ -22,6 +22,9 @@
         "individualFilter": {
           "type": "boolean"
         },
+        "ignoreRuntimeFilterFields": {
+          "type": "boolean"
+        },
         "distinctFilter": {
           "type": "boolean"
         },
@@ -81,6 +84,12 @@
         },
         "name": {
           "$ref": "#/definitions/locale"
+        },
+        "description": {
+          "type": "string"
+        },
+        "warning": {
+          "type": "string"
         }
       }
     },
@@ -100,6 +109,12 @@
             },
             {
               "$ref": "#/definitions/control.text"
+            },
+            {
+              "$ref": "#/definitions/control.text-tags"
+            },
+            {
+              "$ref": "#/definitions/control.color-palette"
             },
             {
               "$ref": "#/definitions/control.dropdown"
@@ -225,6 +240,32 @@
         },
         "defaultValue": {
           "type": "string"
+        }
+      }
+    },
+    "control.text-tags": {
+      "properties": {
+        "type": {
+          "const": "text-tags"
+        },
+        "defaultValue": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "control.color-palette": {
+      "properties": {
+        "type": {
+          "const": "color-palette"
+        },
+        "defaultValue": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -362,6 +403,12 @@
               "$ref": "#/definitions/control.text"
             },
             {
+              "$ref": "#/definitions/control.text-tags"
+            },
+            {
+              "$ref": "#/definitions/control.color-palette"
+            },
+            {
               "$ref": "#/definitions/control.dropdown"
             },
             {
@@ -462,6 +509,12 @@
               "$ref": "#/definitions/control.text"
             },
             {
+              "$ref": "#/definitions/control.text-tags"
+            },
+            {
+              "$ref": "#/definitions/control.color-palette"
+            },
+            {
               "$ref": "#/definitions/control.dropdown"
             },
             {
@@ -525,6 +578,12 @@
             },
             {
               "$ref": "#/definitions/control.text"
+            },
+            {
+              "$ref": "#/definitions/control.text-tags"
+            },
+            {
+              "$ref": "#/definitions/control.color-palette"
             },
             {
               "$ref": "#/definitions/control.dropdown"
