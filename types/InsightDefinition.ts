@@ -330,7 +330,7 @@ export type Tray<
   canDrop?: (context: Context, draggedItem: any) => boolean;
 };
 
-export type Datatype = 'string' | 'boolean' | 'integer' | 'double';
+export type Datatype = 'string' | 'boolean' | 'integer' | 'double' | 'formula' | 'date'
 
 export enum InsightViewMode {
   maximized,

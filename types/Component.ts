@@ -31,6 +31,7 @@ export type AppliedPrompts = {
     };
     type: string;
     values: string[];
+    variable?: string;
   };
 };
 
@@ -47,6 +48,10 @@ export type onDrillDownFunction = (drilldown: {
   event?: MouseEvent;
   drills: Drill[];
   measureIndex: 0;
+  isDimensionGroupDrills?: boolean;
+  clearDrillDown?: boolean;
+  allowDrillWithoutRows?: boolean;
+  field?: string;
 }) => void;
 
 export type DrillType = 'row' | 'column' | 'row-column';
