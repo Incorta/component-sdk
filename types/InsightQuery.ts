@@ -188,12 +188,27 @@ export interface InsightQuery {
   usingNewQP?: boolean;
   /**
    *
+   * @type {number}
+   * @memberof InsightQuery
+   */
+  pageSize?: number;
+  /**
+   *
+   * @type {number}
+   * @memberof InsightQuery
+   */
+  maxRowsLimit?: number;
+  /**
+   *
    * @type {boolean}
    * @memberof InsightQuery
    */
   debugging?: boolean;
   queryExecutionMode?: InsightQueryQueryExecutionModeEnum;
+  mlOptions?: any[];
   sortWithinGroups?: boolean;
+  subQueries?: { [key: string]: InsightQuery };
+  format?: InsightQueryFormatEnum | undefined;
 }
 
 /**
@@ -238,6 +253,12 @@ export interface Filter {
    * @memberof Filter
    */
   prompt?: boolean;
+  /**
+   *
+   * @type {string}
+   * @memberof Filter
+   */
+  label?: string;
 }
 
 /**
@@ -560,6 +581,12 @@ export interface ConditionalFormat {
    * @memberof ConditionalFormat
    */
   backgroundColor?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof ConditionalFormat
+   */
+  formula?: string;
 }
 
 /**
@@ -634,6 +661,12 @@ export interface RowDimension {
    * @memberof RowDimension
    */
   rowSubTotal?: boolean;
+  /**
+   *
+   * @type {GeoInformation}
+   * @memberof RowDimension
+   */
+  geoInformation?: GeoInformation;
 }
 
 /**
@@ -872,9 +905,35 @@ export interface FieldFormat {
   type?: string;
 }
 
+/**
+ *
+ * @export
+ * @interface GeoInformation
+ */
+export interface GeoInformation {
+  /**
+   *
+   * @type {string}
+   * @memberof GeoInformation
+   */
+  role: string;
+  /**
+   *
+   * @type {string}
+   * @memberof GeoInformation
+   */
+  required: boolean;
+}
+
 export enum InsightQueryQueryExecutionModeEnum {
   AUTO = 'AUTO',
   INCORTAENGINE = 'INCORTA_ENGINE',
   SPARKSQLENGINE = 'SPARK_SQL_ENGINE',
   INCORTASQLENGINE = 'INCORTA_SQL_ENGINE'
+}
+
+export enum InsightQueryFormatEnum {
+  Json = 'json',
+  Csv = 'csv',
+  Xlsx = 'xlsx'
 }
