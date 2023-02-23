@@ -7,7 +7,8 @@ let {
   useQuery,
   LoadingOverlay,
   ErrorOverlay,
-  usePrivateData
+  usePrivateData,
+  useTooltip
 } = window.incortaSDKApi ?? {};
 
 export {
@@ -19,5 +20,6 @@ export {
   useQuery,
   LoadingOverlay,
   ErrorOverlay,
-  usePrivateData
+  usePrivateData,
+  useTooltip
 };

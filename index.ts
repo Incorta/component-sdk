@@ -8,6 +8,7 @@ import {
 import { ChartDefinitionBase, Context } from './types/InsightDefinition';
 import { InsightQuery } from './types/InsightQuery';
 import { UseQueryOptions, UseQueryResult } from 'react-query';
+import { HideTooltip, ShowTooltip } from './types/Tooltip';
 
 export * from './types/AppContext';
 
@@ -26,6 +27,8 @@ export * from './types/QueryBuilderFactory';
 export * from './types/QueryBuilder';
 
 export * from './types/Component';
+
+export * from './types/Tooltip';
 
 export function useLocale(): {
   locale: string;
@@ -79,3 +82,8 @@ type ErrorOverlayProps = React.PropsWithChildren<{
 }>;
 
 export function ErrorOverlay(props: ErrorOverlayProps): any;
+
+export function useTooltip(): {
+  showTooltip: ShowTooltip;
+  hideTooltip: HideTooltip;
+}
