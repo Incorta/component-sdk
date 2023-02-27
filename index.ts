@@ -79,3 +79,7 @@ type ErrorOverlayProps = React.PropsWithChildren<{
 }>;
 
 export function ErrorOverlay(props: ErrorOverlayProps): any;
+
+export function useSlicerData(): {
+  selectedValues: any;
+};
