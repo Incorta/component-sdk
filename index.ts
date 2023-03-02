@@ -87,12 +87,20 @@ export function useDropdown(): {
     values,
     selectedValues,
     isDisabled,
-    multiple
+    multiple,
+    top,
+    left,
+    width,
+    showTitle
   }: {
     placeholder: string;
     values: string[];
     selectedValues?: string[] | string;
     isDisabled: boolean;
     multiple?: boolean;
+    top?: number;
+    left?: number;
+    width?: number;
+    showTitle?: boolean;
   }) => any;
 };
