@@ -8,7 +8,7 @@ let {
   LoadingOverlay,
   ErrorOverlay,
   usePrivateData,
-  useSlicerData
+  useDropdown
 } = window.incortaSDKApi ?? {};
 
 export {
@@ -21,5 +21,5 @@ export {
   LoadingOverlay,
   ErrorOverlay,
   usePrivateData,
-  useSlicerData
+  useDropdown
 };

@@ -80,6 +80,19 @@ type ErrorOverlayProps = React.PropsWithChildren<{
 
 export function ErrorOverlay(props: ErrorOverlayProps): any;
 
-export function useSlicerData(): {
+export function useDropdown(): {
   selectedValues: any;
+  setDropdownProps: ({
+    placeholder,
+    values,
+    selectedValues,
+    isDisabled,
+    multiple
+  }: {
+    placeholder: string;
+    values: string[];
+    selectedValues?: string[] | string;
+    isDisabled: boolean;
+    multiple?: boolean;
+  }) => any;
 };
