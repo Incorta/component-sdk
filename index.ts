@@ -83,6 +83,7 @@ export function ErrorOverlay(props: ErrorOverlayProps): any;
 export function useDropdown(): {
   selectedValues: any;
   setDropdownProps: ({
+    showDropdown,
     placeholder,
     values,
     selectedValues,
@@ -91,6 +92,7 @@ export function useDropdown(): {
     top,
     left
   }: {
+    showDropdown?: boolean;
     placeholder: string;
     values: string[];
     selectedValues?: string[] | string;
