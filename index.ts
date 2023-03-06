@@ -90,7 +90,6 @@ export function useDropdown(): {
     multiple,
     top,
     left,
-    width,
     showTitle
   }: {
     placeholder: string;
@@ -100,7 +99,6 @@ export function useDropdown(): {
     multiple?: boolean;
     top?: number;
     left?: number;
-    width?: number;
     showTitle?: boolean;
   }) => any;
 };
