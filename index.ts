@@ -83,6 +83,7 @@ export function ErrorOverlay(props: ErrorOverlayProps): any;
 export function useDropdown(): {
   selectedValues: any;
   setDropdownProps: ({
+    placeholder,
     values,
     selectedValues,
     isDisabled,
