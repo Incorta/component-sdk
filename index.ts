@@ -90,6 +90,7 @@ export function useDropdown(): {
     top,
     left
   }: {
+    placeholder: string;
     values: string[];
     selectedValues?: string[] | string;
     isDisabled: boolean;
