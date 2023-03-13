@@ -92,7 +92,8 @@ export function useDropdown(): {
     multiple,
     top,
     left,
-    isLoading
+    isLoading,
+    warning
   }: {
     showDropdown?: boolean;
     placeholder: string;
@@ -103,5 +104,6 @@ export function useDropdown(): {
     top?: number;
     left?: number;
     isLoading?: boolean;
+    warning?: string;
   }) => any;
 };
