@@ -93,7 +93,8 @@ export function useDropdown(): {
     top,
     left,
     isLoading,
-    warning
+    warning,
+    enableSearch
   }: {
     showDropdown?: boolean;
     placeholder: string;
@@ -105,5 +106,6 @@ export function useDropdown(): {
     left?: number;
     isLoading?: boolean;
     warning?: string;
+    enableSearch: boolean;
   }) => any;
 };
