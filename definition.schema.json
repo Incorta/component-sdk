@@ -125,6 +125,16 @@
             {
               "properties": {
                 "type": {
+                  "const": "dimensions"
+                },
+                "defaultValue": {
+                  "type": "object"
+                }
+              }
+            },
+            {
+              "properties": {
+                "type": {
                   "const": "page-size"
                 },
                 "defaultValue": {
