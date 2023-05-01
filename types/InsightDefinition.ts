@@ -446,6 +446,10 @@ export type ContextFunction<T, D extends ChartDefinitionBase = ChartDefinitionBa
 export type Context<D extends ChartDefinitionBase = ChartDefinitionBase> = {
   component: InsightContext<D>;
   app: AppContext;
+  session: {
+    tenantName: string;
+    loginName: string;
+  };
 };
 
 export type LocaleString =
