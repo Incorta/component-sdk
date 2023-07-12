@@ -155,7 +155,7 @@ export type SortState = {
   order: 'desc' | 'asce';
 };
 
-export type BindingField = ColumnField | FormulaField;
+export type BindingField = ColumnField | FormulaField | DynamicField;
 export type ColumnField = {
   column: string;
   datatype?: Datatype;
@@ -175,6 +175,14 @@ export type FormulaField = {
   datatype?: Datatype;
   function: 'formula';
   isDynamicFormula?: boolean;
+  disabled?: boolean;
+};
+
+export type DynamicField = {
+  formula: string;
+  datatype?: Datatype;
+  function: 'measure';
+  dynamicField?: boolean;
   disabled?: boolean;
 };
 

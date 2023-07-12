@@ -9,6 +9,7 @@ import { ChartDefinitionBase, Context } from './types/InsightDefinition';
 import { InsightQuery } from './types/InsightQuery';
 import { UseQueryOptions, UseQueryResult } from 'react-query';
 import { HideTooltip, ShowTooltip } from './types/Tooltip';
+import { DynamicField } from './types/InsightContext';
 
 export * from './types/AppContext';
 
@@ -42,6 +43,8 @@ export function usePrompts(): {
   drillDown: onDrillDownFunction;
   presentationVariables: any[];
   setPresentationVariableValue: (key, value) => void;
+  dynamicFields: DynamicField[];
+  setDynamicFieldValue: (key, value) => void;
 };
 
 export function useQueryBuilder<T extends ChartDefinitionBase>(
