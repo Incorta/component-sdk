@@ -459,6 +459,9 @@
               "properties": {
                 "type": {
                   "const": "date-format"
+                },
+                "defaultValue": {
+                  "type": "string"
                 }
               }
             },
