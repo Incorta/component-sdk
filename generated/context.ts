@@ -1,7 +1,17 @@
 export interface Settings {
-  [key: string]: any;
+  applyRunTimeFilters: boolean;
+  componentType: string;
+  multiple: boolean;
+  multipleSelection: boolean;
+  vertical: boolean;
+  lov: boolean;
+  inputFields: boolean;
+  singleValue: boolean;
+  showValues: boolean;
 }
 
 export interface Bindings {
-  [key: string]: { [key: string]: any };
+  field: {
+    dateFormat: string;
+  };
 }
