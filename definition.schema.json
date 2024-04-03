@@ -279,6 +279,24 @@
         }
       }
     },
+    "control.conditional-formatting-color": {
+      "properties": {
+        "type": {
+          "const": "conditional-formatting-color"
+        },
+        "defaultValue": {
+          "type": "string"
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "legacyConditionKey": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
     "control.dropdown": {
       "properties": {
         "type": {
@@ -423,6 +441,9 @@
             },
             {
               "$ref": "#/definitions/control.color"
+            },
+            {
+              "$ref": "#/definitions/control.conditional-formatting-color"
             },
             {
               "properties": {
