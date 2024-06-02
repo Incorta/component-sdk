@@ -279,19 +279,40 @@
         }
       }
     },
-    "control.conditional-formatting-color": {
+    "control.conditional-formatting": {
       "properties": {
         "type": {
-          "const": "conditional-formatting-color"
+          "const": "conditional-formatting"
         },
-        "defaultValue": {
-          "type": "string"
-        },
-        "options": {
+        "uiControlOptions": {
           "type": "object",
           "properties": {
-            "legacyConditionKey": {
-              "type": "string"
+            "show": {
+              "type": "object",
+              "properties": {
+                "backgroundColor": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "defaultValue": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "color": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "defaultValue": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -443,9 +464,6 @@
               "$ref": "#/definitions/control.color"
             },
             {
-              "$ref": "#/definitions/control.conditional-formatting-color"
-            },
-            {
               "properties": {
                 "type": {
                   "const": "scale"
@@ -489,13 +507,6 @@
             {
               "properties": {
                 "type": {
-                  "const": "conditional-formatting"
-                }
-              }
-            },
-            {
-              "properties": {
-                "type": {
                   "const": "drill-down"
                 }
               }
@@ -506,6 +517,9 @@
                   "const": "range"
                 }
               }
+            },
+            {
+              "$ref": "#/definitions/control.conditional-formatting"
             }
           ]
         }
