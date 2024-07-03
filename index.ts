@@ -99,7 +99,9 @@ export function useDropdown(): {
     top,
     left,
     isLoading,
-    enableSearch
+    enableSearch,
+    dropdownProps,
+    displayValues
   }: {
     showDropdown?: boolean;
     placeholder: string;
@@ -111,10 +113,16 @@ export function useDropdown(): {
     left?: number;
     isLoading?: boolean;
     enableSearch: boolean;
+    dropdownProps?: Record<string, string | number>;
+    displayValues?: {
+      value: string;
+      label: string;
+      selectionLabel: string;
+    }[];
   }) => any;
 };
 
 export function useTooltip(): {
   showTooltip: ShowTooltip;
   hideTooltip: HideTooltip;
-}
+};

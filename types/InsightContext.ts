@@ -155,7 +155,7 @@ export type SortState = {
   order: 'desc' | 'asce';
 };
 
-export type BindingField = ColumnField | FormulaField | DynamicField;
+export type BindingField = ColumnField | FormulaField | MlField | DynamicField;
 export type ColumnField = {
   column: string;
   datatype?: Datatype;
@@ -169,6 +169,7 @@ export type ColumnField = {
   dataPartsColumnLabel?: string;
   dataPartsColumnDatatype?: Datatype;
   isBusinessViewFormula?: boolean;
+  format?: string;
 };
 export type FormulaField = {
   formula: string;
@@ -176,6 +177,8 @@ export type FormulaField = {
   function: 'formula';
   isDynamicFormula?: boolean;
   disabled?: boolean;
+  formulaDataType?: Datatype;
+  format?: string;
 };
 
 export type DynamicField = {
@@ -184,10 +187,18 @@ export type DynamicField = {
   function: 'measure';
   dynamicField?: boolean;
   disabled?: boolean;
+  format?: string;
+};
+export type MlField = {
+  datatype: Datatype;
+  function: 'ml';
+  disabled?: boolean;
+  format?: string;
 };
 
 export type AnalyzerMode =
   | 'dashboard-insight'
   | 'incorta-view'
   | 'incorta-ad-hoc-view'
+  | 'insight-sub-query'
   | 'alert-condition';

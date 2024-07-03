@@ -52,6 +52,7 @@ export type onDrillDownFunction = (drilldown: {
   clearDrillDown?: boolean;
   allowDrillWithoutRows?: boolean;
   field?: string;
+  directDashboardDrillDown?: boolean;
 }) => void;
 
 export type DrillType = 'row' | 'column' | 'row-column';

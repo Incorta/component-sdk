@@ -279,6 +279,45 @@
         }
       }
     },
+    "control.conditional-formatting": {
+      "properties": {
+        "type": {
+          "const": "conditional-formatting"
+        },
+        "uiControlOptions": {
+          "type": "object",
+          "properties": {
+            "show": {
+              "type": "object",
+              "properties": {
+                "backgroundColor": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "defaultValue": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "color": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "defaultValue": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "control.dropdown": {
       "properties": {
         "type": {
@@ -468,13 +507,6 @@
             {
               "properties": {
                 "type": {
-                  "const": "conditional-formatting"
-                }
-              }
-            },
-            {
-              "properties": {
-                "type": {
                   "const": "drill-down"
                 }
               }
@@ -485,6 +517,9 @@
                   "const": "range"
                 }
               }
+            },
+            {
+              "$ref": "#/definitions/control.conditional-formatting"
             }
           ]
         }
