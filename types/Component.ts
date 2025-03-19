@@ -42,6 +42,8 @@ export type Drill = {
   value: string;
   operator: string;
   dataType: string;
+  field?: string;
+  clearDrillDown?: boolean;
 };
 
 export type onDrillDownFunction = (drilldown: {

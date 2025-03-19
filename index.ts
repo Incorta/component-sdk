@@ -91,33 +91,27 @@ export function useDropdown(): {
   searchValue: string;
   setDropdownProps: ({
     showDropdown,
-    placeholder,
-    values,
-    selectedValues,
-    isDisabled,
-    multiple,
-    top,
-    left,
-    isLoading,
-    enableSearch,
-    dropdownProps,
-    displayValues
+    containerStyle,
+    dropdowns
   }: {
     showDropdown?: boolean;
-    placeholder: string;
-    values: string[];
-    selectedValues?: string[] | string;
-    isDisabled: boolean;
-    multiple?: boolean;
-    top?: number;
-    left?: number;
-    isLoading?: boolean;
-    enableSearch: boolean;
-    dropdownProps?: Record<string, string | number>;
-    displayValues?: {
-      value: string;
-      label: string;
-      selectionLabel: string;
+    containerStyle?: any;
+    dropdowns: {
+      placeholder: string;
+      values: string[];
+      selectedValues?: string[] | string;
+      isDisabled: boolean;
+      multiple?: boolean;
+      top?: number;
+      left?: number;
+      isLoading?: boolean;
+      enableSearch: boolean;
+      dropdownProps?: Record<string, string | number>;
+      displayValues?: {
+        value: string;
+        label: string;
+        selectionLabel: string;
+      }[];
     }[];
   }) => any;
 };
