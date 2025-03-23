@@ -49,7 +49,8 @@ export function usePrompts(): {
 
 export function useQueryBuilder<T extends ChartDefinitionBase>(
   context: Context<T>,
-  prompts?: AppliedPrompts
+  prompts?: AppliedPrompts,
+  queryTag?: string
 ): UseQueryResult<InsightQuery, any>;
 
 export function useCustomQuery(
@@ -60,7 +61,8 @@ export function useCustomQuery(
 export function useQuery<T extends ChartDefinitionBase>(
   context: Context<T>,
   prompts?: AppliedPrompts,
-  options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
+  options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>,
+  queryTag?: string
 ): UseQueryResult<ResponseData, any> & {
   queryBuilderResult: UseQueryResult<ResponseData, any>;
   context: null | Context<T>;
