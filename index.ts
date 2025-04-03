@@ -10,6 +10,7 @@ import { InsightQuery } from './types/InsightQuery';
 import { UseQueryOptions, UseQueryResult } from 'react-query';
 import { HideTooltip, ShowTooltip } from './types/Tooltip';
 import { DynamicField } from './types/InsightContext';
+import { setDashboardState, useDashboardStateProps } from './types/DashboardState';
 
 export * from './types/AppContext';
 
@@ -31,6 +32,8 @@ export * from './types/Component';
 
 export * from './types/Tooltip';
 
+export * from './types/DashboardState';
+
 export function useLocale(): {
   locale: string;
   formatMessage(key: string): string;
@@ -46,6 +49,8 @@ export function usePrompts(): {
   dynamicFields: DynamicField[];
   setDynamicFieldValue: (key, value) => void;
 };
+
+export function useInsightState(): any;
 
 export function useQueryBuilder<T extends ChartDefinitionBase>(
   context: Context<T>,
@@ -121,4 +126,9 @@ export function useDropdown(): {
 export function useTooltip(): {
   showTooltip: ShowTooltip;
   hideTooltip: HideTooltip;
+};
+
+export function useDadhboardState(payload: useDashboardStateProps): {
+  dashboardState: any;
+  setDashboardState: setDashboardState;
 };
