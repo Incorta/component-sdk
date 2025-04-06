@@ -10,7 +10,7 @@ let {
   usePrivateData,
   useDropdown,
   useTooltip,
-  useDadhboardState
+  useDashboardState
 } = window.incortaSDKApi ?? {};
 
 export {
@@ -25,5 +25,5 @@ export {
   usePrivateData,
   useDropdown,
   useTooltip,
-  useDadhboardState
+  useDashboardState
 };
