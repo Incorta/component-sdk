@@ -132,7 +132,7 @@ export function useTooltip(): {
   hideTooltip: HideTooltip;
 };
 
-export function useDadhboardState(payload: useDashboardStateProps): {
+export function useDashboardState(payload: useDashboardStateProps): {
   dashboardState: any;
   setDashboardState: setDashboardState;
 };
