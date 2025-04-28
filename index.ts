@@ -49,7 +49,8 @@ export function usePrompts(): {
 
 export function useQueryBuilder<T extends ChartDefinitionBase>(
   context: Context<T>,
-  prompts?: AppliedPrompts
+  prompts?: AppliedPrompts,
+  queryTag?: string
 ): UseQueryResult<InsightQuery, any>;
 
 export function useCustomQuery(
@@ -60,7 +61,8 @@ export function useCustomQuery(
 export function useQuery<T extends ChartDefinitionBase>(
   context: Context<T>,
   prompts?: AppliedPrompts,
-  options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>
+  options?: Omit<UseQueryOptions<any, any, ResponseData, any>, 'queryKey' | 'queryFn'>,
+  queryTag?: string
 ): UseQueryResult<ResponseData, any> & {
   queryBuilderResult: UseQueryResult<ResponseData, any>;
   context: null | Context<T>;
@@ -91,33 +93,27 @@ export function useDropdown(): {
   searchValue: string;
   setDropdownProps: ({
     showDropdown,
-    placeholder,
-    values,
-    selectedValues,
-    isDisabled,
-    multiple,
-    top,
-    left,
-    isLoading,
-    enableSearch,
-    dropdownProps,
-    displayValues
+    containerStyle,
+    dropdowns
   }: {
     showDropdown?: boolean;
-    placeholder: string;
-    values: string[];
-    selectedValues?: string[] | string;
-    isDisabled: boolean;
-    multiple?: boolean;
-    top?: number;
-    left?: number;
-    isLoading?: boolean;
-    enableSearch: boolean;
-    dropdownProps?: Record<string, string | number>;
-    displayValues?: {
-      value: string;
-      label: string;
-      selectionLabel: string;
+    containerStyle?: any;
+    dropdowns: {
+      placeholder: string;
+      values: string[];
+      selectedValues?: string[] | string;
+      isDisabled: boolean;
+      multiple?: boolean;
+      top?: number;
+      left?: number;
+      isLoading?: boolean;
+      enableSearch: boolean;
+      dropdownProps?: Record<string, string | number>;
+      displayValues?: {
+        value: string;
+        label: string;
+        selectionLabel: string;
+      }[];
     }[];
   }) => any;
 };

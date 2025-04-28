@@ -209,6 +209,56 @@ export interface InsightQuery {
   sortWithinGroups?: boolean;
   subQueries?: { [key: string]: InsightQuery };
   format?: InsightQueryFormatEnum | undefined;
+  /**
+   *
+   * @type {string}
+   * @memberof InsightQuery
+   */
+  overrideId?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof InsightQuery
+   */
+  sqlQuery?: string;
+  /**
+   *
+   * @type {Array<DataSetColumn>}
+   * @memberof InsightQuery
+   */
+  dataSetColumns?: Array<DataSetColumn>;
+  /**
+   * Whether default sorting is enabled
+   * @type {boolean}
+   * @memberof InsightQuery
+   */
+  defaultSortingEnabled?: boolean;
+}
+
+/**
+ *
+ * @export
+ * @interface DataSetColumn
+ */
+export interface DataSetColumn {
+  /**
+   *
+   * @type {string}
+   * @memberof DataSetColumn
+   */
+  name?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof DataSetColumn
+   */
+  label?: string;
+  /**
+   *
+   * @type {string}
+   * @memberof DataSetColumn
+   */
+  type?: string;
 }
 
 /**
