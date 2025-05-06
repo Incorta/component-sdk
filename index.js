@@ -9,7 +9,8 @@ let {
   ErrorOverlay,
   usePrivateData,
   useDropdown,
-  useTooltip
+  useTooltip,
+  useDashboardState
 } = window.incortaSDKApi ?? {};
 
 export {
@@ -23,5 +24,6 @@ export {
   ErrorOverlay,
   usePrivateData,
   useDropdown,
-  useTooltip
+  useTooltip,
+  useDashboardState
 };
