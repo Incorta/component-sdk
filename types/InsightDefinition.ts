@@ -221,6 +221,13 @@ export type Setting<
    */
   valueOptions?: ValueOption[] | ContextFunction<ValueOption[], D>;
   /**
+   * a flag to instrcut incorta to inject the user defined custom fonts
+   * from their custom-css into the value options
+   * only valid if value options is set
+   * optional
+   */
+  injectCustomFonts?: boolean;
+  /**
    * affects data calculation
    * optional. default: true
    */
@@ -330,7 +337,7 @@ export type Tray<
   canDrop?: (context: Context, draggedItem: any) => boolean;
 };
 
-export type Datatype = 'string' | 'boolean' | 'integer' | 'double' | 'formula' | 'date'
+export type Datatype = 'string' | 'boolean' | 'integer' | 'double' | 'formula' | 'date';
 
 export enum InsightViewMode {
   maximized,
