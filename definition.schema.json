@@ -30,6 +30,9 @@
         },
         "aggregateFilter": {
           "type": "boolean"
+        },
+        "enableTrayPillColors": {
+          "type": "boolean"
         }
       }
     },
